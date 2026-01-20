@@ -1,0 +1,856 @@
+:root {
+
+  --azul-oscuro:#003866;
+
+  --azul-claro:#78b8e5;
+
+  --gris-texto:#3c3d3d;
+
+  --amarillo:#f5eb6b;
+
+  --fondo:#f4f8fc;
+
+  --accent:#c822bc;
+
+}
+
+
+
+/\* Reset / base \*/
+
+\*{ box-sizing:border-box }
+
+body{
+
+  margin:0;
+
+  font-family:"Poppins",Arial,sans-serif;
+
+  background:var(--fondo);
+
+  color:var(--gris-texto);
+
+}
+
+
+
+/\* 🔥 NECESARIO — evita que el modal aparezca siempre \*/
+
+.hidden{ display:none !important; }
+
+
+
+/\* Header \*/
+
+.site-header{
+
+  background:var(--azul-oscuro);
+
+  padding:22px;
+
+  text-align:center;
+
+  color:#fff;
+
+}
+
+.site-header h1{ margin:0; font-size:20px; font-weight:600 }
+
+
+
+/\* Container \*/
+
+.container{
+
+  max-width:1200px;
+
+  margin:20px auto;
+
+  padding:0 16px;
+
+}
+
+
+
+/\* Controls \*/
+
+.controls{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:16px;
+
+  align-items:flex-start;
+
+  background:#f8fbff;
+
+  border-radius:14px;
+
+  padding:20px;
+
+  box-shadow:0 4px 16px rgba(0,0,0,0.04);
+
+  margin-bottom:20px;
+
+}
+
+
+
+/\* Search \*/
+
+.search-wrap{
+
+  flex:1;
+
+  min-width:280px;
+
+}
+
+\#searchInput{
+
+  width:100%;
+
+  padding:12px 14px;
+
+  border-radius:10px;
+
+  border:1px solid rgba(0,0,0,0.08);
+
+  font-size:14px;
+
+}
+
+
+
+/\* Select filters \*/
+
+.filters-wrap{
+
+  display:flex;
+
+  gap:10px;
+
+  flex-wrap:wrap;
+
+  align-items:center;
+
+}
+
+.filter-select{
+
+  padding:10px 12px;
+
+  border-radius:10px;
+
+  border:2px solid var(--azul-claro);
+
+  background:#fff;
+
+  width:220px;
+
+  font-size:14px;
+
+}
+
+
+
+/\* Export button beside select \*/
+
+.btn-export{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  background:#c822bc;
+
+  color:#fff;
+
+  border:none;
+
+  border-radius:10px;
+
+  padding:10px 12px;
+
+  cursor:pointer;
+
+  font-weight:700;
+
+  box-shadow:0 6px 18px rgba(200,34,188,0.12);
+
+}
+
+.btn-export i{ font-size:16px; }
+
+.btn-export:hover{ background:#a01583; }
+
+
+
+/\* small select (modal calc) \*/
+
+.filter-select.small{ width:auto; padding:8px 10px; font-size:13px; }
+
+
+
+/\* Monto slider \*/
+
+.monto-filter{
+
+  display:flex;
+
+  flex-direction:column;
+
+  min-width:240px;
+
+}
+
+
+
+.monto-label{
+
+  font-weight:600;
+
+  color:var(--azul-oscuro);
+
+  margin-bottom:8px;
+
+}
+
+
+
+.slider-wrap{
+
+  position:relative;
+
+  width:240px;
+
+  height:36px;
+
+}
+
+
+
+/\* Línea del slider debajo \*/
+
+.slider-wrap::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:20px;
+
+  left:0;
+
+  right:0;
+
+  height:4px;
+
+  background:#cbd9e6;
+
+  border-radius:4px;
+
+  z-index:1;
+
+}
+
+
+
+/\* Slider inputs \*/
+
+.slider-wrap input\[type="range"]{
+
+  position:absolute;
+
+  left:0;
+
+  right:0;
+
+  top:10px;
+
+  width:100%;
+
+  pointer-events:none;
+
+  z-index:3;
+
+  background:transparent;
+
+  -webkit-appearance:none;
+
+}
+
+
+
+.slider-wrap input\[type="range"]::-webkit-slider-thumb{
+
+  pointer-events:auto;
+
+  -webkit-appearance:none;
+
+  width:18px;
+
+  height:18px;
+
+  border-radius:50%;
+
+  background:var(--azul-oscuro);
+
+  border:3px solid #fff;
+
+  box-shadow:0 2px 6px rgba(0,0,0,0.25);
+
+}
+
+
+
+.monto-values{
+
+  width:240px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  color:var(--gris-texto);
+
+  font-size:13px;
+
+  margin-top:6px;
+
+}
+
+
+
+/\* Status \*/
+
+.status{
+
+  text-align:center;
+
+  color:var(--azul-oscuro);
+
+  font-weight:600;
+
+  margin:12px 0;
+
+}
+
+
+
+/\* Cards \*/
+
+.cards{
+
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:18px;
+
+}
+
+@media(max-width:900px){
+
+  .cards{ grid-template-columns:repeat(2,1fr) }
+
+}
+
+@media(max-width:600px){
+
+  .cards{ grid-template-columns:1fr }
+
+}
+
+
+
+.card{
+
+  background:#fff;
+
+  border-radius:12px;
+
+  padding:14px;
+
+  box-shadow:0 8px 24px rgba(4,20,40,0.06);
+
+  border-left:6px solid var(--azul-oscuro);
+
+  transition:transform .18s ease;
+
+}
+
+.card:hover{
+
+  transform:translateY(-6px);
+
+}
+
+
+
+.tag-origen{
+
+  background:var(--azul-claro);
+
+  padding:6px 10px;
+
+  font-size:12px;
+
+  border-radius:8px;
+
+  font-weight:700;
+
+  color:#022;
+
+}
+
+
+
+.card-title{
+
+  font-size:16px;
+
+  font-weight:700;
+
+  color:var(--azul-oscuro);
+
+  margin:8px 0;
+
+}
+
+
+
+.meta{
+
+  font-size:14px;
+
+  margin:4px 0;
+
+}
+
+.meta strong{
+
+  color:var(--azul-oscuro);
+
+}
+
+
+
+/\* Buttons \*/
+
+.actions{
+
+  display:flex;
+
+  gap:8px;
+
+  margin-top:12px;
+
+  flex-wrap:wrap;
+
+}
+
+
+
+.btn{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:6px;
+
+  border:none;
+
+  border-radius:8px;
+
+  padding:6px 10px;
+
+  cursor:pointer;
+
+  color:#fff;
+
+  font-weight:600;
+
+  text-decoration:none;
+
+}
+
+.btn-requisitos{ background:var(--amarillo); color:#222 }
+
+.btn-mail{ background:var(--azul-oscuro) }
+
+.btn-ws{ background:#25D366 }
+
+
+
+/\* MODAL -------------------- \*/
+
+.modal-overlay{
+
+  position:fixed;
+
+  inset:0;
+
+  background:rgba(0,0,0,0.45);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  z-index:9999;
+
+}
+
+
+
+.modal{
+
+  background:#ffffff;
+
+  width:100%;
+
+  max-width:700px;
+
+  border-radius:16px;
+
+  padding:26px;
+
+  box-shadow:0 12px 36px rgba(0,0,0,0.20);
+
+  position:relative;
+
+  animation:fadeInModal .25s ease;
+
+}
+
+
+
+/\* Animación suave \*/
+
+@keyframes fadeInModal {
+
+  from { transform:scale(0.94); opacity:0 }
+
+  to   { transform:scale(1); opacity:1 }
+
+}
+
+
+
+/\* Título \*/
+
+.modal-title{
+
+  font-size:22px;
+
+  font-weight:700;
+
+  color:var(--azul-oscuro);
+
+  margin-top:0;
+
+  margin-bottom:14px;
+
+}
+
+
+
+/\* Subtítulos \*/
+
+.req-title{
+
+  font-size:18px;
+
+  font-weight:700;
+
+  color:var(--azul-oscuro);
+
+  margin-top:18px;
+
+}
+
+
+
+/\* Meta con iconos \*/
+
+.modal-meta p{
+
+  margin:10px 0;
+
+  font-size:15px;
+
+  color:var(--gris-texto);
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+}
+
+
+
+.modal-meta i{
+
+  font-size:17px;
+
+  color:var(--azul-oscuro);
+
+}
+
+
+
+.modal-meta a{
+
+  color:var(--azul-oscuro);
+
+  font-weight:600;
+
+  text-decoration:none;
+
+}
+
+.modal-meta a:hover{
+
+  text-decoration:underline;
+
+}
+
+
+
+/\* Requisitos \*/
+
+.modal-body{
+
+  background:#f4f7fc;
+
+  border-radius:10px;
+
+  padding:16px;
+
+  margin-top:10px;
+
+}
+
+
+
+.modal-body ul{
+
+  padding-left:20px;
+
+}
+
+.modal-body li{
+
+  margin-bottom:6px;
+
+  line-height:1.45;
+
+}
+
+
+
+/\* Calculadora dentro del modal \*/
+
+.calc-section{
+
+  margin-top:14px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:8px;
+
+}
+
+.estimation-result{
+
+  font-weight:700;
+
+  color:var(--azul-oscuro);
+
+  padding:8px 10px;
+
+  border-radius:8px;
+
+  background:#f0f6ff;
+
+}
+
+
+
+/\* Botón cerrar \*/
+
+.modal-close{
+
+  position:absolute;
+
+  right:16px;
+
+  top:16px;
+
+  background:var(--azul-oscuro);
+
+  border:none;
+
+  color:white;
+
+  font-size:14px;
+
+  padding:6px 12px;
+
+  border-radius:8px;
+
+  cursor:pointer;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:6px;
+
+}
+
+
+
+.modal-close i{
+
+  font-size:18px;
+
+}
+
+
+
+.modal-close:hover{
+
+  background:#012a4b;
+
+}
+
+
+
+/\* Datos adicionales abajo del modal \*/
+
+.modal-extra{
+
+  margin-top:16px;
+
+  font-size:13px;
+
+  color:#555;
+
+  padding-top:10px;
+
+  border-top:1px solid #dde3ec;
+
+}
+
+
+
+.modal-extra strong{
+
+  color:var(--azul-oscuro);
+
+}
+
+/\* =======================
+
+   PAGINACIÓN ELEGANTE
+
+   ======================= \*/
+
+
+
+.pagination{
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  gap:6px;
+
+  margin-top:24px;
+
+  flex-wrap:wrap;
+
+}
+
+
+
+/\* Botones \*/
+
+.page-btn{
+
+  padding:8px 12px;
+
+  border-radius:8px;
+
+  background:#e6eff7;
+
+  color:var(--azul-oscuro);
+
+  border:none;
+
+  cursor:pointer;
+
+  font-weight:600;
+
+  transition:0.25s ease;
+
+  min-width:36px;
+
+  text-align:center;
+
+}
+
+
+
+.page-btn:hover{
+
+  background:var(--azul-claro);
+
+  color:#fff;
+
+}
+
+
+
+.page-btn.active{
+
+  background:var(--azul-oscuro);
+
+  color:#fff;
+
+}
+
+
+
+.tarifa-warning {
+
+    background: #fff4d6;
+
+    border-left: 4px solid #ffb100;
+
+    padding: 12px 15px;
+
+    margin: 15px 0 25px 0;
+
+    color: #654800;
+
+    font-size: 14px;
+
+    border-radius: 6px;
+
+}
+
